@@ -28,7 +28,7 @@ for f in "${files[@]}"; do
 
 	git -C "${iceRepoPath}" diff "${prevCommit}"..HEAD -- "${src_file}" |
 		/usr/local/bin/rg "^\-" | \rg -v "\-#|\+v|\---" | tr -d "-" >"${f}_min.diff"
-	gcut -f1 "${f}_min.diff" | gxargs -I % -n 1 sd '^%\t.*' '' "${tgt_file}"
+	gcut -f1 "${f}_min.diff" | xargs -I % -n 1 sd '^%\t.*' '' "${tgt_file}"
 	gsed -i -r '14,${/^$/d}' "${tgt_file}"
 
 	git -C "${iceRepoPath}" diff "${prevCommit}"..HEAD -- "${src_file}" |
@@ -38,9 +38,11 @@ for f in "${files[@]}"; do
 	[[ "$f" =~ emoji ]] && sort -u "${tgt_file}" -o tmp_emoji && mv tmp_emoji "${tgt_file}"
 	if [[ $(wc -l "${f}_add.diff" | gcut -d ' ' -f -1) != 0 ]] && [[ ! $f =~ emoji|en_ext ]]; then
 		if [[ "$f" == "base" ]] || [[ "$f" == "ext" ]]; then
-			pypy3 "${pyScrPath}" -i "${f}_add.diff" -o "${tgt_file}" -m
+			python3 "${pyScrPath}" -i "${f}_add.diff" -o "${tgt_file}" -m
+			# pypy3 "${pyScrPath}" -i "${f}_add.diff" -o "${tgt_file}" -m
 		else
-			pypy3 "${pyScrPath}" -i "${f}_add.diff" -o "${tgt_file}" -m -c
+			python3 "${pyScrPath}" -i "${f}_add.diff" -o "${tgt_file}" -m -c
+			# pypy3 "${pyScrPath}" -i "${f}_add.diff" -o "${tgt_file}" -m -c
 		fi
 	fi
 
