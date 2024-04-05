@@ -37,11 +37,17 @@ local pairTable = {
 }
 
 local function detect_os()
+	local system = ""
 	local user_distribute_name = rime_api:get_distribution_code_name()
 	if user_distribute_name:lower():match("weasel") then
-		return "Windows"
+		system = "Windows"
+	elseif user_distribute_name:lower():match("squirrel") then
+		system = "MacOS"
+	elseif user_distribute_name:lower():match("ibus-rime") then
+		system = "Linux"
+	else
+		system = "iOS"
 	end
-	local system = io.popen("uname -s"):read("*l")
 	return system
 end
 
