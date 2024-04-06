@@ -39,7 +39,7 @@ local function fly_fixed(input, env)
 			prev_cand_ok = false
 		end
 
-		if #cands > 50 then
+		if #cands > 80 then
 			break
 		end
 	end

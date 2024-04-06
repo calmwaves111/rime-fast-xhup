@@ -9,11 +9,12 @@ patch:
 
   style:
     # 註：預設的配色方案及代碼（指定爲 style/color_scheme 系統默認色系 - native）
-    color_scheme: catppuccin_frappe               # macos明亮主题
-    color_scheme_dark: catppuccin_macchiato       # macos黑暗主题
+    color_scheme: catppuccin_frappe                   # macos明亮主题
+    color_scheme_dark: catppuccin_macchiato           # macos黑暗主题
 
     show_paging: true
     inline_preedit: false
+    translucency: 0.93
     corner_radius: 10
     hilited_corner_radius: 0
     border_height: 0

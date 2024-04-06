@@ -18,29 +18,6 @@
 
 local charset = {
 	["CJK"] = { first = 0x4E00, last = 0x9FFF }, -- CJK Unified Ideographs - https://unicode.org/charts/PDF/U4E00.pdf
-	--[[ ["Misc"] = {
-		128732, -- 128733, -- 128734, -- 128735,
-		129653,
-		129654,
-		129655, -- 129659, -- 129660,
-		129671,
-		129672, -- 129705, -- 129706, -- 129707,
-		129708,
-		129709,
-		129710, -- 129719, -- 129720, -- 129721, -- 129722,
-		129723,
-		129724,
-		129725,
-		129727, -- 129401, -- 129484,
-		129731, -- 129732, -- 129733,
-		129742,
-		129743, -- 129751, -- 129752, -- 129753,
-		129754,
-		129755, -- 129760, -- 129761, -- 129762, -- 129763, -- 129764, -- 129765, -- 129766, -- 129767,
-		129768, -- 129776, -- 129778, -- 129779, -- 129780, -- 129781,
-		129782,
-		129783,
-	}, ]]
 	["ExtA"] = { first = 0x3400, last = 0x4DBF }, -- CJK Unified Ideographs Extension A - https://unicode.org/charts/PDF/U3400.pdf
 	["ExtB"] = { first = 0x20000, last = 0x2A6DF }, -- CJK Unified Ideographs Extension B - https://unicode.org/charts/PDF/U20000.pdf
 	["ExtC"] = { first = 0x2A700, last = 0x2B73F }, -- CJK Unified Ideographs Extension C - https://unicode.org/charts/PDF/U2A700.pdf
@@ -66,9 +43,6 @@ end
 
 local function is_charset(s)
 	return function(c)
-		--[[ if table.find(charset["Misc"], c) then
-			return true
-		end ]]
 		return ((c >= charset[s].first) and (c <= charset[s].last))
 	end
 end

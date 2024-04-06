@@ -199,7 +199,7 @@ function cold_word_drop.filter(input, env)
 				table.insert(cands, cand)
 			end
 		end
-		if #cands > 50 then
+		if #cands > 80 then
 			break
 		end
 	end
